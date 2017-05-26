@@ -2,9 +2,14 @@
 
 cypherC(char word[], int key);
 
-int main(int argc, char *argv[]){
-if(argc==2){
-	cypherC(argv[2],argv[1]);
+int main(int argc, const char* argv[]){
+if(argc==3){
+	char palabra2[100];
+	strcpy(palabra2,argv[2]);
+	int kee= atoi(argv[1]);
+	cypherC(palabra2,kee);
+	return ;
+
 }
 
 char palabra[100];
