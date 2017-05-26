@@ -1,20 +1,20 @@
 #include <stdio.h>
 
-char[] cypherC(char word[], int key);
+cypherC(char word[], int key);
 
 int main(){
-char palabra[];
+char palabra[100];
 int clave;
 
-printf("Ingrese una palabra para ser codificada");
-gets(palabra);
-printf("Ingrese la clave para el cifrado");
-scanf("%d",%clave);
-
-printf(cypherC(palabra[],clave));
+printf("Ingrese una palabra para ser codificada: ");
+fgets(palabra, 100, stdin);
+printf("Ingrese la clave para el cifrado: ");
+scanf("%d", &clave);
+cypherC(palabra,clave);
+return 0;
 }
 
-char[] cypherC(char word[],int key){
+cypherC(char word[100],int key){
 int i;
 char letra;
 for(i = 0; word[i] != '\0'; ++i){
@@ -39,5 +39,5 @@ for(i = 0; word[i] != '\0'; ++i){
             word[i] = letra;
         }
     }
-return word;
+printf("Tu clave es %s",word);
 }
