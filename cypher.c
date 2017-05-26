@@ -2,7 +2,11 @@
 
 cypherC(char word[], int key);
 
-int main(){
+int main(int argc, char *argv[]){
+if(argc==2){
+	cypherC(argv[2],argv[1]);
+}
+
 char palabra[100];
 int clave;
 
