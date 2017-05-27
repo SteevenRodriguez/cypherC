@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <string.h>
-cypherC(char word[], int key,char mor[]);
+void cypherC(char word[], int key);
 
-encodeMorse(char word[],char mor[1000]);
+void encodeMorse(char word[],char mor[]);
 
-int main(int argc,char argv[]){
-char mor[100];
+int main(int argc,char** argv){
 if(argc==3){
-	printf("Cifrado Ciclico");
-	char palabra2[100];
+	printf("Cifrado Ciclico\n");
+	char palabra2[100]={'\0'};
 	strcpy(palabra2,argv[2]);
 	int key= atoi(argv[1]);
-	cypherC(palabra2,key,mor);
+	cypherC(palabra2,key);
+	
 	return 0;
 
 }
@@ -23,14 +23,14 @@ printf("Ingrese una palabra para ser codificada: ");
 fgets(palabra, 100, stdin);
 printf("Ingrese la clave para el cifrado: ");
 scanf("%d", &clave);
-cypherC(palabra,clave,mor);
-
+cypherC(palabra,clave);
 return 0;
 }
 
- cypherC(char word[100],int key,char mor[]){
+void cypherC(char word[100],int key){
 int i;
 char letra;
+char mor[100];
 for(i = 0; word[i] != '\0'; ++i){
         letra = word[i];
         
@@ -53,17 +53,17 @@ for(i = 0; word[i] != '\0'; ++i){
             word[i] = letra;
         }
     }
-printf("Tu clave es %s ",word);
-
+printf("Codigo Cifrado: %s\n",word);
+encodeMorse(word,mor);
 }
-encodeMorse(char word2[100],char mor[100]){
+void encodeMorse(char word2[100],char mor[100]){
 int k;
 for(k = 0; word2[k]!='\0'; ++k){
-	const char letra=word2[k];
+	char letra=word2[k];
 	if (letra=='A' || letra=='a')
 		strcat(mor,".-");
-	else if (letra==' ' )
-              	strcat(mor, '/');
+	else if (letra==" ")
+              	strcat(mor, "/");
 	else if (letra=='B' || letra=='b')
 		strcat(mor,"-...");
 	else if (letra=='C' || letra=='c')
@@ -115,6 +115,7 @@ for(k = 0; word2[k]!='\0'; ++k){
 	else if (letra=='Z' || letra=='z')
 		strcat(mor,"--..");
 }
-printf("Su frase en codigo morse es: %s \n",mor);	
+printf("Codigo Morse: %s\n",mor);
+	
 	
 }
