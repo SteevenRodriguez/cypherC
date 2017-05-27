@@ -18,7 +18,7 @@ if(argc==3){
 
 char palabra[100];
 int clave;
-
+printf("Cifrado Ciclico\n");
 printf("Ingrese una palabra para ser codificada: ");
 fgets(palabra, 100, stdin);
 printf("Ingrese la clave para el cifrado: ");
