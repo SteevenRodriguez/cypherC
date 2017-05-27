@@ -1,14 +1,18 @@
 #include <stdio.h>
+#include <string.h>
+cypherC(char word[], int key,char mor[]);
 
-cypherC(char word[], int key);
-encodeMorse(char word[]);
-int main(int argc, char** argv){
+encodeMorse(char word[],char mor[1000]);
+
+int main(int argc,char argv[]){
+char mor[100];
 if(argc==3){
+	printf("Cifrado Ciclico");
 	char palabra2[100];
 	strcpy(palabra2,argv[2]);
-	int kee= atoi(argv[1]);
-	cypherC(palabra2,kee);
-	return ;
+	int key= atoi(argv[1]);
+	cypherC(palabra2,key,mor);
+	return 0;
 
 }
 
@@ -19,11 +23,12 @@ printf("Ingrese una palabra para ser codificada: ");
 fgets(palabra, 100, stdin);
 printf("Ingrese la clave para el cifrado: ");
 scanf("%d", &clave);
-cypherC(palabra,clave);
+cypherC(palabra,clave,mor);
+
 return 0;
 }
 
-cypherC(char word[100],int key){
+ cypherC(char word[100],int key,char mor[]){
 int i;
 char letra;
 for(i = 0; word[i] != '\0'; ++i){
@@ -49,67 +54,66 @@ for(i = 0; word[i] != '\0'; ++i){
         }
     }
 printf("Tu clave es %s ",word);
-encodeMorse(word);
+
 }
-encodeMorse(char word2[100]){
+encodeMorse(char word2[100],char mor[100]){
 int k;
-char** mor;
 for(k = 0; word2[k]!='\0'; ++k){
-	char letra=word2[k];
+	const char letra=word2[k];
 	if (letra=='A' || letra=='a')
-		mor[k] = ".-";
-	else if (letra==' ')
-              	mor[k]  = "/";
+		strcat(mor,".-");
+	else if (letra==' ' )
+              	strcat(mor, '/');
 	else if (letra=='B' || letra=='b')
-		mor[k] ="-...";
+		strcat(mor,"-...");
 	else if (letra=='C' || letra=='c')
-		mor[k] = "-.-.";
+		strcat(mor,"-.-.");
 	else if (letra=='D' || letra=='d')
-		mor[k] = "-..";
+		strcat(mor,"-..");
 	else if (letra=='E' || letra=='e')
-		mor[k] = ".";
+		strcat(mor,".");
 	else if (letra=='F' || letra=='f')
-		mor[k] = "..-.";
+		strcat(mor,"..-.");
 	else if (letra=='G' || letra=='g')
-		mor[k] = "--.";
+		strcat(mor,"--.");
 	else if (letra=='H' || letra=='h')
-		mor[k] = "....";
+		strcat(mor,"....");
 	else if (letra=='I' || letra=='i')
-		mor[k] = "..";
+		strcat(mor,"..");
 	else if (letra=='J' || letra=='j')
-		mor[k] = ".---";
+		strcat(mor,".---");
 	else if (letra=='K' || letra=='k')
-		mor[k] = "-.-";
+		strcat(mor,"-.-");
 	else if (letra=='L' || letra=='l')
-		mor[k] = ".-..";
+		strcat(mor,".-..");
 	else if (letra=='M' || letra=='m')
-		mor[k] = "--";
+		strcat(mor,"--");
 	else if (letra=='N' || letra=='n')
-		mor[k] = "-.";
+		strcat(mor,"-.");
 	else if (letra=='O' || letra=='o')
-		mor[k] = "---";
+		strcat(mor,"---");
 	else if (letra=='P' || letra=='p')
-		mor[k] = ".--.";
+		strcat(mor,".--.");
 	else if (letra=='Q' || letra=='q')
-		mor[k] = "--.-";
+		strcat(mor,"--.-");
 	else if (letra=='R' || letra=='r')
-		mor[k] = ".-.";
+		strcat(mor,".-.");
 	else if (letra=='S' || letra=='s')
-		mor[k] = "...";
+		strcat(mor,"...");
 	else if (letra=='T' || letra=='t')
-		mor[k] = "-";
+		strcat(mor,"-");
 	else if (letra=='U' || letra=='u')
-		mor[k] = "..-";
+		strcat(mor,"..-");
 	else if (letra=='V' || letra=='v')
-		mor[k] = "...-";
+		strcat(mor,"...-");
 	else if (letra=='W' || letra=='w')
-		mor[k] = ".--";
+		strcat(mor,".--");
 	else if (letra=='X' || letra=='x')
-		mor[k] = "-..-";
+		strcat(mor,"-..-");
 	else if (letra=='Y' || letra=='y')
-		mor[k] = "-.--";
+		strcat(mor,"-.--");
 	else if (letra=='Z' || letra=='z')
-		mor[k] = "--..";
+		strcat(mor,"--..");
 }
 printf("Su frase en codigo morse es: %s \n",mor);	
 	
